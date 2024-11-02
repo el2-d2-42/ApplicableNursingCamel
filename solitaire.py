@@ -22,8 +22,6 @@ with EmissionsTracker() as tracker:
             for x in signs:
                 for y in colors:
                     print("Card: " + i + " Color: " + y + " Symbol: " + x)
-
-            
     
         suits = { #keys are unicode symbols for suits
             u'\u2660': "black",
