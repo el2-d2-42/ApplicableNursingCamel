@@ -11,32 +11,9 @@ with EmissionsTracker() as tracker:
 
     class Game:
 
-        x = "A"
-        y = "2"
-        z = "3"
-        a = "4"
-        b = "5"
-        c = "6"
-        d = "7"
-        e = "8"
-        f = "9"
-        g = "10"
-        h = "J"
-        i = "Q"
-        j = "K"
-
-        color1 = "red"
-        color2 = "black"
-
-        sign1 = "diamond"
-        sign2 = "spades"
-        sign3 = "hearts"
-        sign4 = "clubs"
-
-
-        values = [x, y, z, a, b, c, d, e, f, g, h, i, j]
-        colors = [color1, color2]
-        signs = [sign1, sign2, sign3, sign4]
+        values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+        colors = ["red", "black"]
+        signs = ["diamond", "spades", "hearts", "clubs"]
 
         list_of_values = values
 
