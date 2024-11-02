@@ -1,5 +1,6 @@
 from card_elements import Card, Deck, Pile
 from codecarbon import EmissionsTracker
+from itertools import product
 import pprint
 import random
 
@@ -12,16 +13,16 @@ with EmissionsTracker() as tracker:
     class Game:
 
         values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-        colors = ["red", "black"]
-        signs = ["diamond", "spades", "hearts", "clubs"]
-
-        list_of_values = values
+        signs = {"diamond" : "red", "spades" : "black", "hearts" : "red", "clubs" : "black"}
 
         print("The cards in your deck are:")
-        for i in list_of_values:
-            for x in signs:
-                for y in colors:
-                    print("Card: " + i + " Color: " + y + " Symbol: " + x)
+        
+        
+        for value, x in product(values, signs.keys()):
+            colour = signs[x]
+            print(f"Card: {value}, Color: {colour}, Symbol: {x}")
+
+            
     
         suits = { #keys are unicode symbols for suits
             u'\u2660': "black",
@@ -30,11 +31,11 @@ with EmissionsTracker() as tracker:
             u'\u2666': "red",
         }
     
-        numPlayPiles = 7
+        numPlayPiles = 7 # Constant
     
         def __init__(self):
             self.list_of_cards = [Card(value, suit) for value in range(1, 14) for suit in ["Diamonds", "Hearts", "Clubs", "Spades"]]
-            self.deck = Deck(self.list_of_values,self.suits)
+            self.deck = Deck(self.values,self.suits)
             self.playPiles = []
             for i in range(self.numPlayPiles):
                 thisPile = Pile()
@@ -54,7 +55,7 @@ with EmissionsTracker() as tracker:
         
         def checkCardOrder(self,higherCard,lowerCard):
             suitsDifferent = self.suits[higherCard.suit] != self.suits[lowerCard.suit]
-            valueConsecutive = self.list_of_values[self.list_of_values.index(higherCard.value)-1] == lowerCard.value
+            valueConsecutive = self.values[self.values.index(higherCard.value)-1] == lowerCard.value
             return suitsDifferent and valueConsecutive
     
         def checkIfCompleted(self):
@@ -68,7 +69,7 @@ with EmissionsTracker() as tracker:
                 return False
             elif len(self.blockPiles[card.suit].cards)>0:
                 highest_value = self.blockPiles[card.suit].cards[0].value
-                if self.list_of_values[self.list_of_values.index(highest_value)+1] == card.value:
+                if self.values[self.values.index(highest_value)+1] == card.value:
                     self.blockPiles[card.suit].cards.insert(0,card)
                     return True
                 else:
