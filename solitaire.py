@@ -18,7 +18,7 @@ with EmissionsTracker() as tracker:
         
         #print("The cards in your deck are:")
         #
-        #for value, x in product(values, signs.keys()):
+        #for value, x in product(values, signs.keys()): 
         #    colour = signs[x]
         #    print(f"Card: {value}, Colour: {colour}, Value: {x}")
         

@@ -1,0 +1,389 @@
+
+\documentclass{article}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=1cm, right=2cm, top=2cm, bottom=2cm]{geometry} % Adjust margins here
+
+
+
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.33,0.47,0.60}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.00,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.53,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.20,0.53}{##1}}}
+\@namedef{PY@tok@kt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.20,0.20,0.60}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.20,0.20,0.20}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\@namedef{PY@tok@nf}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.40,0.73}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.00,0.40}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.60,0.40,0.20}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.20,0.20,0.73}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.20,0.40,0.60}{##1}}}
+\@namedef{PY@tok@vg}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.87,0.47,0.00}{##1}}}
+\@namedef{PY@tok@no}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.20,0.40}{##1}}}
+\@namedef{PY@tok@nl}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.47,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.80}{##1}}}
+\@namedef{PY@tok@nt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.47,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@sd}{\def\PY@tc##1{\textcolor[rgb]{0.87,0.27,0.13}{##1}}}
+\@namedef{PY@tok@si}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{0.93,0.93,0.93}{\strut ##1}}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,1.00}{\strut ##1}}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.40,0.00}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.87,0.13,0.00}{##1}}\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@m}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.40,0.00,0.93}{##1}}}
+\@namedef{PY@tok@mi}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.87}{##1}}}
+\@namedef{PY@tok@mf}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.40,0.00,0.93}{##1}}}
+\@namedef{PY@tok@mh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.33,0.53}{##1}}}
+\@namedef{PY@tok@mo}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.27,0.00,0.93}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@ges}{\let\PY@bf=\textbf\let\PY@it=\textit}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.67,0.67}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.53,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.53,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.53,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.53,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\@namedef{PY@tok@fm}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.40,0.73}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.60,0.40,0.20}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@sb}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@dl}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@s2}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@sh}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@s1}{\def\PY@bc##1{{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}}
+\@namedef{PY@tok@mb}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.40,0.00,0.93}{##1}}}
+\@namedef{PY@tok@il}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.87}{##1}}}
+\@namedef{PY@tok@ch}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\@namedef{PY@tok@cm}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\@namedef{PY@tok@cpf}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\@namedef{PY@tok@c1}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+\begin{document}
+
+\section*{}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{card\PYZus{}elements} \PY{k+kn}{import} \PY{n}{Card}\PY{p}{,} \PY{n}{Deck}\PY{p}{,} \PY{n}{Pile}
+\PY{k+kn}{from} \PY{n+nn}{codecarbon} \PY{k+kn}{import} \PY{n}{EmissionsTracker}
+\PY{k+kn}{from} \PY{n+nn}{itertools} \PY{k+kn}{import} \PY{n}{product}
+\PY{k+kn}{import} \PY{n+nn}{pprint}
+
+
+\PY{n}{pp} \PY{o}{=} \PY{n}{pprint}\PY{o}{.}\PY{n}{PrettyPrinter}\PY{p}{(}\PY{n}{indent}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+
+
+\PY{k}{with} \PY{n}{EmissionsTracker}\PY{p}{(}\PY{p}{)} \PY{k}{as} \PY{n}{tracker}\PY{p}{:}
+
+    \PY{k}{class} \PY{n+nc}{Game}\PY{p}{:}
+
+        \PY{n}{values} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{A}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{3}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{6}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{7}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{9}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{10}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{J}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Q}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{signs} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{diamond}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{red}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{spades}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{black}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{hearts}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{red}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{clubs}\PY{l+s+s2}{\PYZdq{}} \PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{black}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}
+
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{You have a full deck.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}print(\PYZdq{}The cards in your deck are:\PYZdq{})}
+        \PY{c+c1}{\PYZsh{}}
+        \PY{c+c1}{\PYZsh{}for value, x in product(values, signs.keys()):}
+        \PY{c+c1}{\PYZsh{}    colour = signs[x]}
+        \PY{c+c1}{\PYZsh{}    print(f\PYZdq{}Card: \PYZob{}value\PYZcb{}, Colour: \PYZob{}colour\PYZcb{}, Value: \PYZob{}x\PYZcb{}\PYZdq{})}
+        
+        \PY{n}{suits} \PY{o}{=} \PY{p}{\PYZob{}} \PY{c+c1}{\PYZsh{}keys are unicode symbols for suits}
+            \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}u2660}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{black}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}u2665}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{red}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}u2663}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{black}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{l+s+sa}{u}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}u2666}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{red}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+        \PY{p}{\PYZcb{}}
+    
+        \PY{n}{numPlayPiles} \PY{o}{=} \PY{l+m+mi}{7} \PY{c+c1}{\PYZsh{} Constant}
+    
+        \PY{k}{def} \PY{n+nf+fm}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{list\PYZus{}of\PYZus{}cards} \PY{o}{=} \PY{p}{[}
+            \PY{n}{Card}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{suit}\PY{p}{)} \PY{k}{for} \PY{n}{value} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{)} \PY{k}{for} \PY{n}{suit}     \PY{o+ow}{in} \PY{p}{[}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Diamonds}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Hearts}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Clubs}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Spades}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]
+        }\PY{p}{]}
+
+            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck} \PY{o}{=} \PY{n}{Deck}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{values}\PY{p}{,}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{suits}\PY{p}{)}
+            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{numPlayPiles}\PY{p}{)}\PY{p}{:}
+                \PY{n}{thisPile} \PY{o}{=} \PY{n}{Pile}\PY{p}{(}\PY{p}{)}
+                \PY{p}{[}\PY{n}{thisPile}\PY{o}{.}\PY{n}{addCard}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{takeFirstCard}\PY{p}{(}\PY{n}{flip}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
+                \PY{n}{thisPile}\PY{o}{.}\PY{n}{flipFirstCard}\PY{p}{(}\PY{p}{)}  
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{thisPile}\PY{p}{)}
+            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{suit}\PY{p}{:} \PY{n}{Pile}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{suit} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{suits}\PY{p}{\PYZcb{}}
+            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{flip}\PY{p}{(}\PY{p}{)}
+
+        \PY{k}{def} \PY{n+nf}{getGameElements}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+            \PY{n}{returnObject} \PY{o}{=} \PY{p}{\PYZob{}}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{deck}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{p}{)}\PY{p}{,}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{playPiles}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{pile}\PY{p}{)} \PY{k}{for} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{]}\PY{p}{,}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{blockPiles}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{\PYZob{}}\PY{n}{suit}\PY{p}{:} \PY{n+nb}{str}\PY{p}{(}\PY{n}{pile}\PY{p}{)} \PY{k}{for} \PY{n}{suit}\PY{p}{,} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{\PYZcb{}}
+            \PY{p}{\PYZcb{}}
+            \PY{k}{return} \PY{n}{returnObject}
+        
+        \PY{k}{def} \PY{n+nf}{checkCardOrder}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,}\PY{n}{higherCard}\PY{p}{,}\PY{n}{lowerCard}\PY{p}{)}\PY{p}{:}
+            \PY{n}{suitsDifferent} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{suits}\PY{p}{[}\PY{n}{higherCard}\PY{o}{.}\PY{n}{suit}\PY{p}{]} \PY{o}{!=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{suits}\PY{p}{[}\PY{n}{lowerCard}\PY{o}{.}\PY{n}{suit}\PY{p}{]}
+            \PY{n}{valueConsecutive} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{values}\PY{p}{[}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{higherCard}\PY{o}{.}\PY{n}{value}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{lowerCard}\PY{o}{.}\PY{n}{value}
+            \PY{k}{return} \PY{n}{suitsDifferent} \PY{o+ow}{and} \PY{n}{valueConsecutive}
+    
+        \PY{k}{def} \PY{n+nf}{checkIfCompleted}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+            \PY{n}{deckEmpty} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{0}
+            \PY{n}{pilesEmpty} \PY{o}{=} \PY{n+nb}{all}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{0} \PY{k}{for} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{)}
+            \PY{n}{blocksFull} \PY{o}{=} \PY{n+nb}{all}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{13} \PY{k}{for} \PY{n}{suit}\PY{p}{,}\PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{deckEmpty} \PY{o+ow}{and} \PY{n}{pilesEmpty} \PY{o+ow}{and} \PY{n}{blocksFull}
+            
+        \PY{k}{def} \PY{n+nf}{addToBlock}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{card}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{card} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{k}{return} \PY{k+kc}{False}
+            \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles}\PY{p}{[}\PY{n}{card}\PY{o}{.}\PY{n}{suit}\PY{p}{]}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{:}
+                \PY{n}{highest\PYZus{}value} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles}\PY{p}{[}\PY{n}{card}\PY{o}{.}\PY{n}{suit}\PY{p}{]}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{value}
+                \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{values}\PY{p}{[}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{highest\PYZus{}value}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{card}\PY{o}{.}\PY{n}{value}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles}\PY{p}{[}\PY{n}{card}\PY{o}{.}\PY{n}{suit}\PY{p}{]}\PY{o}{.}\PY{n}{cards}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{card}\PY{p}{)}
+                    \PY{k}{return} \PY{k+kc}{True}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{k}{return} \PY{k+kc}{False}   
+            \PY{k}{else}\PY{p}{:} 
+                \PY{k}{if} \PY{n}{card}\PY{o}{.}\PY{n}{value}\PY{o}{==}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{A}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{blockPiles}\PY{p}{[}\PY{n}{card}\PY{o}{.}\PY{n}{suit}\PY{p}{]}\PY{o}{.}\PY{n}{cards}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{card}\PY{p}{)}
+                    \PY{k}{return} \PY{k+kc}{True}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{k}{return} \PY{k+kc}{False}
+        
+        \PY{k}{def} \PY{n+nf}{takeTurn}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+                
+            \PY{c+c1}{\PYZsh{}Pre: flip up unflipped pile end cards \PYZhy{}\PYZgt{} do this automatically}
+            \PY{p}{[}
+                \PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{flip}\PY{p}{(}\PY{p}{)} 
+                \PY{k}{for} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles} 
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0} 
+                \PY{o+ow}{and} \PY{o+ow}{not} \PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{flipped}
+            \PY{p}{]}
+
+         
+            \PY{c+c1}{\PYZsh{}1: check if there are any play pile cards you can play to block piles}
+            \PY{k}{for} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{:}
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{addToBlock}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{card\PYZus{}added} \PY{o}{=} \PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+                    \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Adding play pile card to block: }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                    \PY{k}{return} \PY{k+kc}{True}
+            
+            \PY{c+c1}{\PYZsh{}2: check if cards in deck can be added}
+            \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{addToBlock}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{getFirstCard}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{card\PYZus{}added} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{takeFirstCard}\PY{p}{(}\PY{p}{)}
+                \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Adding card from deck to block: }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                \PY{k}{return} \PY{k+kc}{True}
+            
+            \PY{c+c1}{\PYZsh{}3: move kings to open piles}
+            \PY{k}{for} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{:}
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{:} \PY{c+c1}{\PYZsh{}pile has no cards}
+                    \PY{k}{for} \PY{n}{pile2} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{:}
+                        \PY{k}{if} \PY{n}{pile2} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n}{pile} \PY{o+ow}{and} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile2}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{1} \PY{o+ow}{and} \PY{n}{pile2}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{value} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                            \PY{n}{card\PYZus{}added} \PY{o}{=} \PY{n}{pile2}\PY{o}{.}\PY{n}{cards}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+                            \PY{n}{pile}\PY{o}{.}\PY{n}{addCard}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}
+                            \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Moving }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{ from Pile to Empty Pile}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                            \PY{k}{return} \PY{k+kc}{True}
+                    \PY{n}{first\PYZus{}card} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{getFirstCard}\PY{p}{(}\PY{p}{)}
+                    \PY{k}{if} \PY{n}{first\PYZus{}card} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None} \PY{o+ow}{and} \PY{n}{first\PYZus{}card}\PY{o}{.}\PY{n}{value} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                        \PY{n}{card\PYZus{}added} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{takeFirstCard}\PY{p}{(}\PY{p}{)}
+                        \PY{n}{pile}\PY{o}{.}\PY{n}{addCard}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}
+                        \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Moving }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{ from Deck to Empty Pile}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                        \PY{k}{return} \PY{k+kc}{True}
+            
+            \PY{c+c1}{\PYZsh{}4: add drawn card to playPiles }
+            \PY{k}{for} \PY{n}{pile} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{:}
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{getFirstCard}\PY{p}{(}\PY{p}{)} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{checkCardOrder}\PY{p}{(}\PY{n}{pile}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{getFirstCard}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{card\PYZus{}added} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{takeFirstCard}\PY{p}{(}\PY{p}{)}
+                        \PY{n}{pile}\PY{o}{.}\PY{n}{addCard}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)} 
+                        \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Moving }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{ from Deck to Pile}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{card\PYZus{}added}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                        \PY{k}{return} \PY{k+kc}{True}
+                            
+            \PY{c+c1}{\PYZsh{}5: move around cards in playPiles}
+            \PY{k}{for} \PY{n}{pile1} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{:}
+                \PY{n}{pile1\PYZus{}flipped\PYZus{}cards} \PY{o}{=} \PY{n}{pile1}\PY{o}{.}\PY{n}{getFlippedCards}\PY{p}{(}\PY{p}{)}
+                \PY{k}{if} \PY{o+ow}{not} \PY{n}{pile1\PYZus{}flipped\PYZus{}cards}\PY{p}{:}
+                    \PY{k}{continue}
+
+                \PY{n}{pile1\PYZus{}downcard\PYZus{}count} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile1}\PY{o}{.}\PY{n}{cards}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile1\PYZus{}flipped\PYZus{}cards}\PY{p}{)}
+                \PY{k}{for} \PY{n}{pile2} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{playPiles}\PY{p}{:}
+                    \PY{k}{if} \PY{n}{pile2} \PY{o+ow}{is} \PY{n}{pile1}\PY{p}{:}
+                        \PY{k}{continue}
+
+                \PY{n}{pile2\PYZus{}flipped\PYZus{}cards} \PY{o}{=} \PY{n}{pile2}\PY{o}{.}\PY{n}{getFlippedCards}\PY{p}{(}\PY{p}{)}
+                \PY{k}{if} \PY{o+ow}{not} \PY{n}{pile2\PYZus{}flipped\PYZus{}cards}\PY{p}{:}
+                    \PY{k}{continue}
+
+                \PY{n}{pile2\PYZus{}downcard\PYZus{}count} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile2}\PY{o}{.}\PY{n}{cards}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile2\PYZus{}flipped\PYZus{}cards}\PY{p}{)}
+                \PY{k}{for} \PY{n}{transfer\PYZus{}cards\PYZus{}size} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile1\PYZus{}flipped\PYZus{}cards}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{cards\PYZus{}to\PYZus{}transfer} \PY{o}{=} \PY{n}{pile1\PYZus{}flipped\PYZus{}cards}\PY{p}{[}\PY{p}{:}\PY{n}{transfer\PYZus{}cards\PYZus{}size}\PY{p}{]}
+                        \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{checkCardOrder}\PY{p}{(}\PY{n}{pile2}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{cards\PYZus{}to\PYZus{}transfer}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                            \PY{k}{if} \PY{n}{pile2\PYZus{}downcard\PYZus{}count} \PY{o}{\PYZlt{}} \PY{n}{pile1\PYZus{}downcard\PYZus{}count} 
+                                \PY{o+ow}{or} \PY{p}{(}
+                                    \PY{n}{pile1\PYZus{}downcard\PYZus{}count} \PY{o}{==} \PY{l+m+mi}{0} 
+                                    \PY{o+ow}{and} \PY{n+nb}{len}\PY{p}{(}\PY{n}{cards\PYZus{}to\PYZus{}transfer}\PY{p}{)} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pile1}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+
+                                \PY{n}{pile2}\PY{o}{.}\PY{n}{cards} \PY{o}{=} \PY{n}{cards\PYZus{}to\PYZus{}transfer}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{n}{pile2}\PY{o}{.}\PY{n}{cards}
+                                \PY{n}{pile1}\PY{o}{.}\PY{n}{cards} \PY{o}{=} \PY{n}{pile1}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{n}{transfer\PYZus{}cards\PYZus{}size}\PY{p}{:}\PY{p}{]}
+                                \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Moved }\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{ cards between piles: }\PY{l+s+si}{\PYZob{}1\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                                    \PY{n}{transfer\PYZus{}cards\PYZus{}size}\PY{p}{,}
+                                    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{card}\PY{p}{)} \PY{k}{for} \PY{n}{card} \PY{o+ow}{in} \PY{n}{cards\PYZus{}to\PYZus{}transfer}\PY{p}{]}\PY{p}{)}
+                                    \PY{p}{)}\PY{p}{)}
+                                \PY{k}{return} \PY{k+kc}{True}
+            \PY{k}{return} \PY{k+kc}{False}
+        
+                    
+        \PY{k}{def} \PY{n+nf}{simulate}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{draw} \PY{o}{=} \PY{k+kc}{False}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+        
+            \PY{c+c1}{\PYZsh{} clear cache if last turn was not card draw}
+            \PY{k}{if} \PY{o+ow}{not} \PY{n}{draw}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cache} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        
+            \PY{n}{turnResult} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{takeTurn}\PY{p}{(}\PY{n}{verbose}\PY{o}{=}\PY{n}{verbose}\PY{p}{)}
+        
+            \PY{k}{if} \PY{n}{turnResult}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{simulate}\PY{p}{(}\PY{n}{verbose}\PY{o}{=}\PY{n}{verbose}\PY{p}{)}
+                    
+            \PY{k}{else}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{}End: draw from deck}
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{:}
+
+                    \PY{n}{currentCard} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cards}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+
+                    \PY{k}{if} \PY{n}{currentCard} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cache}\PY{p}{:}
+                        \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{No more moves left!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                        \PY{k}{return} 
+
+                    \PY{k}{else}\PY{p}{:}
+                        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{drawCard}\PY{p}{(}\PY{p}{)}
+                        \PY{c+c1}{\PYZsh{}if verbose:}
+                            \PY{c+c1}{\PYZsh{}print(\PYZdq{}Drawing new card: \PYZob{}0\PYZcb{}\PYZdq{}.format(str(currentCard)))}
+                        \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cache}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{currentCard}\PY{p}{)}
+                        \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{simulate}\PY{p}{(}\PY{n}{draw}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{verbose}\PY{o}{=}\PY{n}{verbose}\PY{p}{)}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{k}{if} \PY{n}{verbose}\PY{p}{:}
+                        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{No more moves left!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                    \PY{k}{return}
+
+        \PY{k}{def} \PY{n+nf}{merge}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{arr}\PY{p}{,} \PY{n}{l}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{r}\PY{p}{)}\PY{p}{:}
+            \PY{n}{n1} \PY{o}{=} \PY{n}{m} \PY{o}{\PYZhy{}} \PY{n}{l} \PY{o}{+} \PY{l+m+mi}{1}
+            \PY{n}{n2} \PY{o}{=} \PY{n}{r} \PY{o}{\PYZhy{}} \PY{n}{m}
+
+            \PY{n}{L} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{*} \PY{p}{(}\PY{n}{n1}\PY{p}{)}
+            \PY{n}{R} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{*} \PY{p}{(}\PY{n}{n2}\PY{p}{)}
+
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0} \PY{p}{,} \PY{n}{n1}\PY{p}{)}\PY{p}{:}
+                \PY{n}{L}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{arr}\PY{p}{[}\PY{n}{l} \PY{o}{+} \PY{n}{i}\PY{p}{]}
+            
+            \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0} \PY{p}{,} \PY{n}{n2}\PY{p}{)}\PY{p}{:}
+                \PY{n}{R}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{arr}\PY{p}{[}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1} \PY{o}{+} \PY{n}{j}\PY{p}{]}
+
+            \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{j} \PY{o}{=} \PY{l+m+mi}{0}
+            \PY{n}{k} \PY{o}{=} \PY{n}{l}
+
+            \PY{k}{while} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{n1} \PY{o+ow}{and} \PY{n}{j} \PY{o}{\PYZlt{}} \PY{n}{n2}\PY{p}{:}
+                \PY{k}{if} \PY{n}{L}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{R}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{:}
+                    \PY{n}{arr}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n}{L}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                    \PY{n}{i} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{n}{arr}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n}{R}\PY{p}{[}\PY{n}{j}\PY{p}{]}
+                    \PY{n}{j} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{n}{k} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+            
+            \PY{k}{while} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{n1}\PY{p}{:}
+                \PY{n}{arr}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n}{L}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                \PY{n}{i} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{n}{k} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+            
+            \PY{k}{while} \PY{n}{j} \PY{o}{\PYZlt{}} \PY{n}{n2}\PY{p}{:}
+                \PY{n}{arr}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n}{R}\PY{p}{[}\PY{n}{j}\PY{p}{]}
+                \PY{n}{j} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{n}{k} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+            
+        \PY{k}{def} \PY{n+nf}{mergeSort}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{arr}\PY{p}{,} \PY{n}{l}\PY{p}{,} \PY{n}{r}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{l} \PY{o}{\PYZlt{}} \PY{n}{r}\PY{p}{:}
+                \PY{n}{m} \PY{o}{=} \PY{p}{(}\PY{n}{l}\PY{o}{+}\PY{p}{(}\PY{n}{r}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{2}
+
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{mergeSort}\PY{p}{(}\PY{n}{arr}\PY{p}{,} \PY{n}{l}\PY{p}{,} \PY{n}{m}\PY{p}{)}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{mergeSort}\PY{p}{(}\PY{n}{arr}\PY{p}{,} \PY{n}{m}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{r}\PY{p}{)}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{arr}\PY{p}{,} \PY{n}{l}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{r}\PY{p}{)}
+
+    \PY{k}{def} \PY{n+nf}{main}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+
+        \PY{n}{thisGame} \PY{o}{=} \PY{n}{Game}\PY{p}{(}\PY{p}{)}
+        \PY{n}{thisGame}\PY{o}{.}\PY{n}{simulate}\PY{p}{(}\PY{n}{verbose}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+        \PY{n}{pp}\PY{o}{.}\PY{n}{pprint}\PY{p}{(}\PY{n}{thisGame}\PY{o}{.}\PY{n}{getGameElements}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+        \PY{k}{if}\PY{p}{(}\PY{n}{thisGame}\PY{o}{.}\PY{n}{checkIfCompleted}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Congrats! You won!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Sorry, you did not win}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+        \PY{n}{sorted\PYZus{}cards} \PY{o}{=} \PY{n}{thisGame}\PY{o}{.}
+            \PY{n}{mergeSort}\PY{p}{(}\PY{p}{[}\PY{n}{card}\PY{o}{.}\PY{n}{value} \PY{k}{for} \PY{n}{card} \PY{o+ow}{in} \PY{n}{thisGame}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cards}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{thisGame}\PY{o}{.}\PY{n}{deck}\PY{o}{.}\PY{n}{cards}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Sorted cards:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sorted\PYZus{}cards}\PY{p}{)}
+        \PY{k}{return}
+    
+    \PY{n}{main}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\end{document}
