@@ -106,14 +106,14 @@ with EmissionsTracker() as tracker:
             for pile in self.playPiles:
                 if len(pile.cards)==0: #pile has no cards
                     for pile2 in self.playPiles:
-                        if len(pile2.cards)>1 and pile2.cards[0].value == "K":
+                        if pile2 is not pile and len(pile2.cards)>1 and pile2.cards[0].value == "K":
                             card_added = pile2.cards.pop(0)
                             pile.addCard(card_added)
                             if verbose:
                                 print("Moving {0} from Pile to Empty Pile".format(str(card_added)))
                             return True
-                    
-                    if self.deck.getFirstCard() is not None and self.deck.getFirstCard().value == "K":
+                    first_card = self.deck.getFirstCard()
+                    if first_card is not None and first_card.value == "K":
                         card_added = self.deck.takeFirstCard()
                         pile.addCard(card_added)
                         if verbose:
