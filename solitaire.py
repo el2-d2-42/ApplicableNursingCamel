@@ -15,7 +15,13 @@ with EmissionsTracker() as tracker:
         signs = {"diamond" : "red", "spades" : "black", "hearts" : "red", "clubs" : "black"}
 
         print("You have a full deck.")
-    
+        
+        #print("The cards in your deck are:")
+        #
+        #for value, x in product(values, signs.keys()):
+        #    colour = signs[x]
+        #    print(f"Card: {value}, Colour: {colour}, Value: {x}")
+        
         suits = { #keys are unicode symbols for suits
             u'\u2660': "black",
             u'\u2665': "red",
