@@ -93,8 +93,8 @@ with EmissionsTracker() as tracker:
                     if verbose:
                         print("Adding play pile card to block: {0}".format(str(card_added)))
                     return True
-                else:
-                    print("Pile has cards")
+                #else:
+                    #print("Pile has cards")
             
             #2: check if cards in deck can be added
             if self.addToBlock(self.deck.getFirstCard()):
@@ -120,8 +120,8 @@ with EmissionsTracker() as tracker:
                         if verbose:
                             print("Moving {0} from Deck to Empty Pile".format(str(card_added)))
                         return True
-                else:
-                    print("Pile has cards")
+                #else:
+                    #print("Pile has cards")
             
             #4: add drawn card to playPiles 
             for pile in self.playPiles:
@@ -132,8 +132,8 @@ with EmissionsTracker() as tracker:
                         if verbose:
                             print("Moving {0} from Deck to Pile".format(str(card_added)))
                         return True
-                else:
-                    print("Pile has cards")
+                #else:
+                    #print("Pile has cards")
                             
             #5: move around cards in playPiles
             for pile1 in self.playPiles:
@@ -165,8 +165,8 @@ with EmissionsTracker() as tracker:
                                                 ", ".join([str(card) for card in cards_to_transfer])
                                                                                              ))
                                         return True
-                else:
-                    print("Pile has cards")
+                #else:
+                    #print("Pile has cards")
             return False
         
                     
