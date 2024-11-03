@@ -2,7 +2,6 @@ from card_elements import Card, Deck, Pile
 from codecarbon import EmissionsTracker
 from itertools import product
 import pprint
-import random
 
 
 pp = pprint.PrettyPrinter(indent=4)
@@ -93,8 +92,8 @@ with EmissionsTracker() as tracker:
                     if verbose:
                         print("Adding play pile card to block: {0}".format(str(card_added)))
                     return True
-                #else:
-                    #print("Pile has cards")
+                else:
+                    print("Pile has cards")
             
             #2: check if cards in deck can be added
             if self.addToBlock(self.deck.getFirstCard()):
@@ -120,8 +119,8 @@ with EmissionsTracker() as tracker:
                         if verbose:
                             print("Moving {0} from Deck to Empty Pile".format(str(card_added)))
                         return True
-                #else:
-                    #print("Pile has cards")
+                else:
+                    print("Pile has cards")
             
             #4: add drawn card to playPiles 
             for pile in self.playPiles:
@@ -132,41 +131,37 @@ with EmissionsTracker() as tracker:
                         if verbose:
                             print("Moving {0} from Deck to Pile".format(str(card_added)))
                         return True
-                #else:
-                    #print("Pile has cards")
+                else:
+                    print("Pile has cards")
                             
             #5: move around cards in playPiles
             for pile1 in self.playPiles:
                 pile1_flipped_cards = pile1.getFlippedCards()
-                if len(pile1_flipped_cards)>0:
-                    for pile2 in self.playPiles:
-                        pile2_flipped_cards = pile2.getFlippedCards()
-                        if pile2 is not pile1 and len(pile2_flipped_cards)>0:
-                            for transfer_cards_size in range(1,len(pile1_flipped_cards)+1):
-                                cards_to_transfer = pile1_flipped_cards[:transfer_cards_size]
-                                if self.checkCardOrder(pile2.cards[0],cards_to_transfer[-1]):
-                                    pile1_downcard_count = len(pile1.cards) - len(pile1_flipped_cards)
-                                    pile2_downcard_count = len(pile2.cards) - len(pile2_flipped_cards)
-                                    if pile2_downcard_count < pile1_downcard_count:
-                                        [pile2.cards.insert(0,card) for card in reversed(cards_to_transfer)]
-                                        pile1.cards = pile1.cards[transfer_cards_size:]
-                                        if verbose:
-                                            print("Moved {0} cards between piles: {1}".format(
-                                                transfer_cards_size,
-                                                ", ".join([str(card) for card in cards_to_transfer])
-                                                                                             ))
-                                        return True
-                                    elif pile1_downcard_count==0 and len(cards_to_transfer) == len(pile1.cards):
-                                        [pile2.cards.insert(0,card) for card in reversed(cards_to_transfer)]
-                                        pile1.cards = []
-                                        if verbose:
-                                            print("Moved {0} cards between piles: {1}".format(
-                                                transfer_cards_size,
-                                                ", ".join([str(card) for card in cards_to_transfer])
-                                                                                             ))
-                                        return True
-                #else:
-                    #print("Pile has cards")
+                if not pile1_flipped_cards:
+                    continue
+
+                pile1_downcard_count = len(pile1.cards) - len(pile1_flipped_cards)
+                for pile2 in self.playPiles:
+                    if pile2 is pile1:
+                        continue
+
+                pile2_flipped_cards = pile2.getFlippedCards()
+                if not pile2_flipped_cards:
+                    continue
+
+                pile2_downcard_count = len(pile2.cards) - len(pile2_flipped_cards)
+                for transfer_cards_size in range(1, len(pile1_flipped_cards) + 1):
+                        cards_to_transfer = pile1_flipped_cards[:transfer_cards_size]
+                        if self.checkCardOrder(pile2.cards[0], cards_to_transfer[-1]):
+                            if pile2_downcard_count < pile1_downcard_count or (pile1_downcard_count == 0 and len(cards_to_transfer) == len(pile1.cards)):
+                                pile2.cards = cards_to_transfer[::-1] + pile2.cards
+                                pile1.cards = pile1.cards[transfer_cards_size:]
+                                if verbose:
+                                    print("Moved {0} cards between piles: {1}".format(
+                                    transfer_cards_size,
+                                    ", ".join([str(card) for card in cards_to_transfer])
+                                    ))
+                                return True
             return False
         
                     
