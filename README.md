@@ -1,4 +1,9 @@
-# Green-Coding-Competition-FY23
+The winning project for DurHack2024's Green Coding Challenge set by Accenture.
+Emanuel P. and Jody W.
+
+The following is the project description:
+
+# ACCENTURE Green-Coding-Competition-FY23
 
 Welcome to the Green Coding Hackathon FY23.
 The aim of this competition it's to utilize tools to analyse CO2 emissions and use methods and good practices to reduce our environmental impact into the technology world.
