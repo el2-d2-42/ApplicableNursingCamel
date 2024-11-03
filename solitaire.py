@@ -14,14 +14,7 @@ with EmissionsTracker() as tracker:
         values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
         signs = {"diamond" : "red", "spades" : "black", "hearts" : "red", "clubs" : "black"}
 
-        print("The cards in your deck are:")
-        
-        
-        for value, x in product(values, signs.keys()):
-            colour = signs[x]
-            print(f"Card: {value}, Color: {colour}, Symbol: {x}")
-
-            
+        print("You have a full deck.")
     
         suits = { #keys are unicode symbols for suits
             u'\u2660': "black",
@@ -92,8 +85,6 @@ with EmissionsTracker() as tracker:
                     if verbose:
                         print("Adding play pile card to block: {0}".format(str(card_added)))
                     return True
-                else:
-                    print("Pile has cards")
             
             #2: check if cards in deck can be added
             if self.addToBlock(self.deck.getFirstCard()):
@@ -119,8 +110,6 @@ with EmissionsTracker() as tracker:
                         if verbose:
                             print("Moving {0} from Deck to Empty Pile".format(str(card_added)))
                         return True
-                else:
-                    print("Pile has cards")
             
             #4: add drawn card to playPiles 
             for pile in self.playPiles:
@@ -131,8 +120,6 @@ with EmissionsTracker() as tracker:
                         if verbose:
                             print("Moving {0} from Deck to Pile".format(str(card_added)))
                         return True
-                else:
-                    print("Pile has cards")
                             
             #5: move around cards in playPiles
             for pile1 in self.playPiles:
